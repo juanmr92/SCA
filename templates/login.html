@@ -1,0 +1,7 @@
+<form class="form-signin" autocomplete="off">
+	<h2 class="form-signin-heading">Bienvenido</h2>
+	<input type="text" class="form-control" id="account" placeholder="Usuario" ng-model="user.account">
+	<input type="password" class="form-control" id="password" placeholder="Contraseña" ng-model="user.password">
+	<p ng-show="result" class="alert alert-danger">{{result}}</p>
+	<button type="submit" class="btn btn-lg btn-success btn-block" ng-click="loginUser()">Ingresar</button>
+</form>

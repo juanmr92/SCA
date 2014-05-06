@@ -1,0 +1,36 @@
+<div ng-include="'templates/navBar.html'"></div>
+<div class="row page-header">
+	<div class="col-md-8">
+		<h2>Tareas</h2>
+	</div>
+</div>
+<alert ng-show="msg" type="msg.type" close="closeMsg">{{msg.text}}</alert>
+
+<div ng-init="loadTasks()">
+<!-- 	<div ng-repeat="items in split_items" class="row">
+	    <div ng-repeat="item in items" class="col-md-4">
+	        item
+	    </div>
+	</div> -->
+	<div ng-repeat="(idCols,taskCols) in taskRows" class="row">
+		<div ng-repeat="(id,taskObj) in taskCols" class="col-md-4">
+			<div class="panel panel-{{taskObj.task_state | taskFtr:'style'}}">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{taskObj.task.name}}</h3>
+				</div>
+				<div class="panel-body">
+					<p>{{taskObj.task.description}}	</p>
+					<label>Fecha de entrega: {{taskObj.task.delivery_date}}</label> <br> 
+					<label>Fecha asginada: {{taskObj.task.assignate_date}}</label> <br> 
+					<!-- <label class="text-{{task.color}}">Calificacion:{{task.task_state}}</label> -->
+					<label class="text-{{taskObj.task_state | taskFtr:'style'}}">Calificacion:{{taskObj.task_state | taskFtr:'name'}}</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<pagination ng-show="maxResults != -1"  boundary-links="true" items-per-page="pageSize" total-items="maxResults" page="pageNumber" 
+on-select-page="pageChanged(page)" first-text="&laquo;" last-text="&raquo;" next-text="Siguiente" previous-text="Anterior" max-size="5" rotate="false"></pagination>

@@ -1,0 +1,7 @@
+<ul class="menu">
+	<li ng-include="'templates/navBar.html'"></li>
+	<alert ng-show="msg" type="msg.type" close="closeMsg()">{{msg.text}}</alert>
+	<li ng-repeat="(id,subjectObject) in subjects">
+		<a class="btn btn-info btn-lg btn-block" href="#/{{option}}/{{subjectObject.id}}">{{subjectObject.subject.name}}</a>
+	</li>
+</ul>

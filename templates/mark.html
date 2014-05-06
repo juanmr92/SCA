@@ -1,0 +1,28 @@
+<div ng-include="'templates/navBar.html'"></div>
+<div class="row page-header">
+	<div class="col-md-8">
+		<h2>Notas</h2>
+	</div>
+</div>
+<alert ng-show="msg" type="msg.type" close="closeMsg()">{{msg.text}}</alert>
+<div class="table-responsive col-md-6 col-md-offset-3">
+<table class="table table-striped" ng-init="loadMarks()">
+	<thead>
+		<tr class="danger">
+			<th>Descripción</th>
+			<th>Nota</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="(id,markObj) in marks">
+		<td>{{markObj.mark.description}}</td>
+		<td>
+			<label class="text-info">{{markObj.score}}</label>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<pagination ng-show="maxResults != -1"  boundary-links="true" items-per-page="pageSize" total-items="maxResults" page="pageNumber" 
+on-select-page="pageChanged(page)" first-text="&laquo;" last-text="&raquo;" next-text="Siguiente" previous-text="Anterior" max-size="5" rotate="false"></pagination>
+</div>
